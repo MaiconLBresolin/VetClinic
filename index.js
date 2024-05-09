@@ -1,5 +1,7 @@
 const express = require("express")
+const exphbs = require("express-handlebars")
 const app = express()
+const bodyParser = require("body-parser")
 const db = require("./db/connection")
 
 const PORT = 3000
@@ -11,7 +13,7 @@ app.listen(PORT, function () {
 //db connection
 db.authenticate()
   .then(() => {
-    console.log("Conecto ao banco com sucesso")
+    console.log("Conectou ao banco com sucesso")
   })
   .catch((err) => {
     console.log("Ocorreu um erro ao se conectar", err)
