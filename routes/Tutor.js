@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const Sequelize = require("../db/connection")
 /*const { getTutors } = require("../controllers/TutorController")*/
 
 const Tutor = require("../models/Tutor")
@@ -70,13 +71,16 @@ router.put("/edit/:id", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
   const id = req.params.id
-  await Tutor.destroy({
-    where: {
-      id: id,
-    },
-  })
-    .then(res.redirect("/"))
-    .catch((err) => console.log(err))
+  try {
+    await Sequelize.transaction(async (t) => {
+      await Pet.destroy({ where: { idTutor: id }, transaction: t })
+      await Tutor.destroy({ where: { id: id }, transaction: t })
+    })
+    res.redirect("/")
+  } catch (err) {
+    console.log(err)
+    res.status(500).send("Internal Server Error")
+  }
 })
 
 module.exports = router
