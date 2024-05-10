@@ -4,7 +4,7 @@ const db = require("../db/connection")
 
 const Tutor = require("./Tutor")
 
-const Pet = db.define("Pet", {
+const Pet = db.define("pets", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -21,14 +21,14 @@ const Pet = db.define("Pet", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  dateOfBirth: {
+  date_of_birth: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  //  tutorId: {
-  //    type: DataTypes.INTEGER,
-  //    allowNull: false,
-  //  },
+  idTutor: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 })
 
 Tutor.hasMany(Pet)

@@ -2,26 +2,26 @@ const { DataTypes } = require("sequelize")
 
 const db = require("../db/connection")
 
-const Tutor = db.define("Tutor", {
+const Tutor = db.define("tutors", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   phone: {
     type: DataTypes.STRING,
-    required: true,
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
-    required: true,
+    allowNull: false,
   },
-  dateOfBirth: {
+  date_of_birth: {
     type: DataTypes.STRING,
-    required: true,
+    allowNull: false,
   },
-  zipCode: {
+  zip_code: {
     type: DataTypes.STRING,
-    required: true,
+    allowNull: false,
   },
 })
 
