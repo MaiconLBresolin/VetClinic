@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-//const { getTutors } = require("../controllers/TutorController")
+/*const { getTutors } = require("../controllers/TutorController")*/
 
 const Tutor = require("../models/Tutor")
 const Pet = require("../models/Pet")
