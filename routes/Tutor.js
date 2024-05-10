@@ -68,4 +68,15 @@ router.put("/edit/:id", async (req, res) => {
   }
 })
 
+router.delete("/delete/:id", async (req, res) => {
+  const id = req.params.id
+  await Tutor.destroy({
+    where: {
+      id: id,
+    },
+  })
+    .then(res.redirect("/"))
+    .catch((err) => console.log(err))
+})
+
 module.exports = router
