@@ -69,4 +69,42 @@ router.put("/edit/:idPet/tutor/:idTut", async (req, res) => {
   }
 })
 
+router.delete("/delete/:idPet/tutor/:idTut", async (req, res) => {
+  let idPet = req.params.idPet
+  let idTut = req.params.idTut
+
+  try {
+    const pet = await Pet.findOne({ where: { id: idPet } })
+    console.log(pet.idTutor)
+
+    //se existe
+    if (!pet) {
+      console.log("Pet não encontrado")
+      return res.status(404).json({
+        error: "Pet não encontrado",
+      })
+    }
+
+    // se pertence ao tutor informado
+    if (parseInt(pet.idTutor) !== parseInt(idTut)) {
+      console.log("Pet não pertence ao tutor informado")
+      return res.status(404).json({
+        error: "Pet não pertence ao tutor informado",
+      })
+    }
+
+    await Pet.destroy({
+      where: {
+        id: idPet,
+      },
+    })
+
+    console.log("pet deletado")
+    return res.status(200).json({ message: "Pet deletado com sucesso" })
+  } catch (err) {
+    console.log("Error:", err)
+    return res.status(500).json({ error: "Internal server error" })
+  }
+})
+
 module.exports = router
