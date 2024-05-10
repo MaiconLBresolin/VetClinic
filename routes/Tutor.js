@@ -47,4 +47,25 @@ router.post("/add", (req, res) => {
     .catch((err) => console.log(err))
 })
 
+router.put("/edit/:id", async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const data = await Tutor.findOne({ where: { id: id } })
+    if (!data) {
+      console.log("Não existe tutor registrado com esse id")
+    } else {
+      data.name = req.body.name
+      data.phone = req.body.phone
+      data.email = req.body.email
+      data.date_of_birth = req.body.date_of_birth
+      data.zip_code = req.body.zip_code
+    }
+    await data.save()
+    console.log("dados atualizados")
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 module.exports = router
