@@ -32,12 +32,5 @@ app.get("/", (req, res) => {
   res.send("Está Funcionando!")
 })
 
-/*db.sync({ force: false })
-  .then(() => {
-    app.listen(3000)
-  })
-  .catch((err) => console.log(err))
-*/
-
 app.use("/pet", require("./routes/Pet"))
 app.use("/tutor", require("./routes/Tutor"))
