@@ -33,4 +33,18 @@ router.get("/search", async (req, res) => {
   }
 })
 
+router.post("/add", (req, res) => {
+  let { name, phone, email, date_of_birth, zip_code } = req.body
+
+  Tutor.create({
+    name,
+    phone,
+    email,
+    date_of_birth,
+    zip_code,
+  })
+    .then(() => res.redirect("/"))
+    .catch((err) => console.log(err))
+})
+
 module.exports = router
