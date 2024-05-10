@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-//const { getTutors } = require("../controllers/TutorController")
+/*const { getTutors } = require("../controllers/TutorController")*/
 
 const Tutor = require("../models/Tutor")
 const Pet = require("../models/Pet")
@@ -31,6 +31,20 @@ router.get("/search", async (req, res) => {
   } catch (err) {
     console.error(err)
   }
+})
+
+router.post("/add", (req, res) => {
+  let { name, phone, email, date_of_birth, zip_code } = req.body
+
+  Tutor.create({
+    name,
+    phone,
+    email,
+    date_of_birth,
+    zip_code,
+  })
+    .then(() => res.redirect("/"))
+    .catch((err) => console.log(err))
 })
 
 module.exports = router
