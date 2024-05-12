@@ -27,10 +27,5 @@ app.use(
 app.use(express.json())
 app.use(express.static("public"))
 
-//rotas
-app.get("/", (req, res) => {
-  res.send("Está Funcionando!")
-})
-
 app.use("/pet", require("./routes/Pet"))
 app.use("/tutor", require("./routes/Tutor"))
