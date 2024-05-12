@@ -1,15 +1,27 @@
 const express = require("express")
 const router = express.Router()
-/*const { getTutors } = require("../controllers/TutorController"*/
+const {
+  searchPets,
+  addPet,
+  editPet,
+  deletePet,
+} = require("../controllers/PetController")
 
-const Pet = require("../models/Pet")
-const Tutor = require("../models/Tutor")
+router.get("/search", searchPets)
 
-router.get("/search", async (req, res) => {
+router.post("/add/:id", addPet)
+
+router.put("/edit/:idPet/tutor/:idTut", editPet)
+
+router.delete("/delete/:idPet/tutor/:idTut", deletePet)
+
+/*router.get("/search", async (req, res) => {
   let petList = await Pet.findAll({ raw: true })
   console.log(petList)
 })
+*/
 
+/*
 router.post("/add/:id", async (req, res) => {
   const tutorId = req.params.id
   const { name, species, carry, weight, date_of_birth } = req.body
@@ -28,7 +40,9 @@ router.post("/add/:id", async (req, res) => {
     console.log(err)
   }
 })
+*/
 
+/*
 router.put("/edit/:idPet/tutor/:idTut", async (req, res) => {
   let idPet = req.params.idPet
   let idTut = req.params.idTut
@@ -68,7 +82,9 @@ router.put("/edit/:idPet/tutor/:idTut", async (req, res) => {
     return res.status(500).json({ error: "Internal server error" })
   }
 })
+*/
 
+/*
 router.delete("/delete/:idPet/tutor/:idTut", async (req, res) => {
   let idPet = req.params.idPet
   let idTut = req.params.idTut
@@ -106,5 +122,6 @@ router.delete("/delete/:idPet/tutor/:idTut", async (req, res) => {
     return res.status(500).json({ error: "Internal server error" })
   }
 })
+*/
 
 module.exports = router

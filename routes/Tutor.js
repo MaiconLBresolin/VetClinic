@@ -1,11 +1,21 @@
 const express = require("express")
 const router = express.Router()
-const Sequelize = require("../db/connection")
-/*const { getTutors } = require("../controllers/TutorController")*/
+const {
+  searchTutors,
+  addTutor,
+  editTutor,
+  deleteTutor,
+} = require("../controllers/TutorController")
 
-const Tutor = require("../models/Tutor")
-const Pet = require("../models/Pet")
+router.get("/search", searchTutors)
 
+router.post("/add", addTutor)
+
+router.put("/edit/:id", editTutor)
+
+router.delete("/delete/:id", deleteTutor)
+
+/*
 router.get("/search", async (req, res) => {
   try {
     const tutorList = await Tutor.findAll({
@@ -33,7 +43,9 @@ router.get("/search", async (req, res) => {
     console.error(err)
   }
 })
+*/
 
+/*
 router.post("/add", (req, res) => {
   let { name, phone, email, date_of_birth, zip_code } = req.body
 
@@ -47,7 +59,9 @@ router.post("/add", (req, res) => {
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err))
 })
+*/
 
+/*
 router.put("/edit/:id", async (req, res) => {
   const id = req.params.id
 
@@ -68,7 +82,9 @@ router.put("/edit/:id", async (req, res) => {
     console.log(err)
   }
 })
+*/
 
+/*
 router.delete("/delete/:id", async (req, res) => {
   const id = req.params.id
   try {
@@ -82,5 +98,6 @@ router.delete("/delete/:id", async (req, res) => {
     res.status(500).send("Internal Server Error")
   }
 })
+*/
 
 module.exports = router
