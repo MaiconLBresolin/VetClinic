@@ -6,12 +6,13 @@ const {
   editTutor,
   deleteTutor,
 } = require("../controllers/TutorController")
+const { validateTutor } = require("../middleware/validateTutorData")
 
 router.get("/search", searchTutors)
 
-router.post("/add", addTutor)
+router.post("/add", validateTutor, addTutor)
 
-router.put("/edit/:id", editTutor)
+router.put("/edit/:id", validateTutor, editTutor)
 
 router.delete("/delete/:id", deleteTutor)
 
