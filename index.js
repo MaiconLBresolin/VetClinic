@@ -1,5 +1,4 @@
 const express = require("express")
-const exphbs = require("express-handlebars")
 const app = express()
 const bodyParser = require("body-parser")
 const db = require("./db/connection")
