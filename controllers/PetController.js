@@ -5,6 +5,8 @@ const {
   erasePet,
 } = require("../services/PetService")
 
+const genericMessage = "Operação efetuada com sucesso!!"
+
 const searchPets = async (req, res) => {
   try {
     const petList = await getPetList()
@@ -28,7 +30,7 @@ const addPet = async (req, res) => {
       weight,
       date_of_birth,
     })
-    res.redirect("/")
+    res.status(200).json(genericMessage).redirect("/")
   } catch (err) {
     console.error(err)
     res.status(500).json({ error: "Internal server error" })

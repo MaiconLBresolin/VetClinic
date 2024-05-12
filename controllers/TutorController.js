@@ -5,32 +5,39 @@ const {
   deleteTutorAndPets,
 } = require("../services/TutorService")
 
-const searchTutors = async (req, res) => {
-  const tutorList = await getTutorList()
-  const resultadoFormatado = []
-  for (const tutor of tutorList) {
-    const tutorData = tutor.toJSON()
-    if (tutor.pets && tutor.pets.length > 0) {
-      for (const pet of tutor.pets) {
-        const petData = pet.toJSON()
-        resultadoFormatado.push({
-          ...tutorData,
-          pets: petData,
-        })
-      }
-    } else {
-      resultadoFormatado.push(tutorData)
-    }
-  }
+const genericMessage = "Operação efetuada com sucesso!!"
 
-  console.log(resultadoFormatado)
+const searchTutors = async (req, res) => {
+  try {
+    const tutorList = await getTutorList()
+    const resultadoFormatado = []
+    for (const tutor of tutorList) {
+      const tutorData = tutor.toJSON()
+      if (tutor.pets && tutor.pets.length > 0) {
+        for (const pet of tutor.pets) {
+          const petData = pet.toJSON()
+          resultadoFormatado.push({
+            ...tutorData,
+            pets: petData,
+          })
+        }
+      } else {
+        resultadoFormatado.push(tutorData)
+      }
+    }
+    console.log(resultadoFormatado)
+    res.status(200).json(resultadoFormatado)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: "Internal server error" })
+  }
 }
 
 const addTutor = async (req, res) => {
   try {
     let { name, phone, email, date_of_birth, zip_code } = req.body
     await postNewTutor({ name, phone, email, date_of_birth, zip_code })
-    res.redirect("/")
+    res.status(200).json(genericMessage).redirect("/")
   } catch (err) {
     console.error(err)
     res.status(500).json({ error: "Internal server error" })
@@ -49,7 +56,7 @@ const editTutor = async (req, res) => {
 
   try {
     await updateTutor(id, tutorData)
-    res.send("Dados atualizados")
+    res.status(200).json(genericMessage).redirect("/")
   } catch (err) {
     console.error(err)
     res.status(500).json({ error: "Internal server error" })
@@ -60,7 +67,7 @@ const deleteTutor = async (req, res) => {
   const id = req.params.id
   try {
     await deleteTutorAndPets(id)
-    res.redirect("/")
+    res.status(200).json(genericMessage).redirect("/")
   } catch (err) {
     console.error(err)
     res.status(500).send("Internal Server Error")
