@@ -8,12 +8,11 @@ const {
 } = require('../controllers/TutorController')
 const { validateTutor } = require('../middleware/validateTutorData')
 
-router.get('/search', searchTutors)
+router.get('/', searchTutors)
 
-router.post('/add', validateTutor, addTutor)
+router.post('/', validateTutor, addTutor)
 
-router.put('/edit/:id', validateTutor, editTutor)
+router.put('/:id', validateTutor, editTutor)
 
-router.delete('/delete/:id', deleteTutor)
-
+router.delete('/:id', deleteTutor)
 module.exports = router
