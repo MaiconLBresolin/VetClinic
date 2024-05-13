@@ -1,8 +1,8 @@
-#**VetClinic**
+# **VetClinic**
 
 Trabalho feito por **Maicon Luís Bresolin** para o primeiro desafio da bolsa de Desenvolvimento Back-End com Node.JS da empresa Compass.UOL
 
-##**Como Rodar**
+## **Como Rodar**
 
 1. Tenha o **Node.js** instalado (disponível em https://nodejs.org/en/download/)
 2. Baixe o projeto em seu computador
