@@ -17,7 +17,7 @@
         }
     ],
     "paths": {
-        "/tutor/search": {
+        "/tutor": {
             "get": {
                 "tags": ["Tutor"],
                 "summary": "Procura por um tutor",
@@ -38,9 +38,7 @@
                     }
                 },
                 "security": []
-            }
-        },
-        "/tutor/add": {
+            },
             "post": {
                 "tags": ["Tutor"],
                 "summary": "Adiciona um novo tutor",
@@ -69,7 +67,7 @@
                 "security": []
             }
         },
-        "/tutor/edit/{id}": {
+        "/tutor/{id}": {
             "put": {
                 "tags": ["Tutor"],
                 "summary": "Atualiza um tutor",
@@ -106,9 +104,7 @@
                     }
                 },
                 "security": []
-            }
-        },
-        "/tutor/delete/{id}": {
+            },
             "delete": {
                 "tags": ["Tutor"],
                 "summary": "Deleta um tutor",
@@ -134,7 +130,7 @@
                 "security": []
             }
         },
-        "/pet/search": {
+        "/pet": {
             "get": {
                 "tags": ["Pet"],
                 "summary": "Procura pets",
@@ -155,9 +151,7 @@
                     }
                 },
                 "security": []
-            }
-        },
-        "/pet/add/{id}": {
+            },
             "post": {
                 "tags": ["Pet"],
                 "summary": "Adiciona um novo pet",
@@ -193,7 +187,7 @@
                 "security": []
             }
         },
-        "/pet/edit/{idPet}/tutor/{idTut}": {
+        "/pet/{idPet}/tutor/{idTut}": {
             "put": {
                 "tags": ["Pet"],
                 "summary": "Atualiza um pet",
@@ -237,9 +231,7 @@
                     }
                 },
                 "security": []
-            }
-        },
-        "/pet/delete/{idPet}/tutor/{idTut}": {
+            },
             "delete": {
                 "tags": ["Pet"],
                 "summary": "Deleta um pet",
