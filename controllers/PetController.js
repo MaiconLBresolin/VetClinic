@@ -58,20 +58,6 @@ const editPet = async (req, res) => {
     }
 }
 
-/*const deletePet = async (req, res) => {
-    const idPet = req.params.idPet
-    const idTut = req.params.idTut
-
-    try {
-        const message = await erasePet(idPet, idTut)
-        console.log(message)
-        res.status(200).json({ message })
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: 'Internal server error' })
-    }
-}*/
-
 const deletePet = async (req, res) => {
     const idPet = req.params.idPet
     const idTut = req.params.idTut
